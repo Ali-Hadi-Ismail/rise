@@ -11,19 +11,18 @@
 - 📅 **Task Deadlines & Priorities**  
 - 📂 **Task Categories / Labels**  
 - 📊 **Progress Tracking**  
-- 🌙 **Dark Mode**  
-- ⚡ **Blazing Fast Local Storage** (Hive / Isar / SQFlite)
+- ⚡ **Blazing Fast Local Storage** (SQFlite)
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer         | Tool       | Description                            |
-|---------------|------------|----------------------------------------|
-| 🧱 UI         | Flutter    | Beautiful, cross-platform interface     |
-| 💾 Local DB   | Hive/Isar  | Lightning-fast, offline data storage   |
-| 🧠 State Mgmt | Cubit/Bloc | Predictable state management           |
-| 🖌 Design     | Figma      | Modern, minimalistic UX                |
+| Layer              | Tool       | Description                            |
+|--------------------|------------|----------------------------------------|
+| 🧱 UI              |   Flutter  | Beautiful, cross-platform interface    |
+| 💾 Local DB        | Sqflite    | Lightning-fast, offline data storage   |
+| 🧠 State Managment | Cubit/Bloc | Predictable state management           |
+
 
 ---
 
