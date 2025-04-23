@@ -34,9 +34,4 @@
 
 ---
 
-## 📦 Getting Started
 
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/yourusername/rise_todo_app.git
-   cd rise_todo_app
