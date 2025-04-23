@@ -13,6 +13,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_slidable: ^4.0.0
   intl: ^0.20.2
+  lottie: ^3.3.1
+  sqflite: ^2.4.1
+  bloc: ^9.0.0
+
+  flutter_bloc: ^9.1.0
 
 dev_dependencies:
   flutter_test:
@@ -22,7 +27,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
+  assets:
+    - assets/lottie/
   fonts:
     - family: WinkyRough
       fonts:

@@ -13,8 +13,7 @@ class AddNoteScreen extends StatefulWidget {
 class _AddNoteScreenState extends State<AddNoteScreen>
     with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _contentController = TextEditingController();
+  final TextEditingController _dataContoller = TextEditingController();
 
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -35,23 +34,10 @@ class _AddNoteScreenState extends State<AddNoteScreen>
 
   void _saveNote() {
     if (_formKey.currentState!.validate()) {
-      // Create new note using your model
       Note newNote = Note(
-        _titleController.text,
-        _contentController.text,
+        _dataContoller.text,
       );
 
-      // Call the callback if provided
-      if (widget.onNoteAdded != null) {
-        widget.onNoteAdded!(newNote);
-      }
-
-      // Show success message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Note created successfully')),
-      );
-
-      // Navigate back to notes list
       Navigator.pop(context, newNote);
     }
   }
@@ -93,8 +79,6 @@ class _AddNoteScreenState extends State<AddNoteScreen>
                   children: [
                     _buildSectionTitle('Note Details'),
                     const SizedBox(height: 16),
-                    _buildNoteTitleField(),
-                    const SizedBox(height: 20),
                     _buildNoteContentField(),
                     const SizedBox(height: 40),
                     _buildCreateNoteButton(),
@@ -119,32 +103,6 @@ class _AddNoteScreenState extends State<AddNoteScreen>
     );
   }
 
-  Widget _buildNoteTitleField() {
-    return Card(
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: Colors.grey.shade200),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-        child: TextFormField(
-          controller: _titleController,
-          decoration: const InputDecoration(
-            labelText: 'Note Title',
-            border: InputBorder.none,
-          ),
-          validator: (value) {
-            if (value == null || value.trim().isEmpty) {
-              return 'Please enter a note title';
-            }
-            return null;
-          },
-        ),
-      ),
-    );
-  }
-
   Widget _buildNoteContentField() {
     return Card(
       elevation: 0,
@@ -155,7 +113,7 @@ class _AddNoteScreenState extends State<AddNoteScreen>
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         child: TextFormField(
-          controller: _contentController,
+          controller: _dataContoller,
           decoration: const InputDecoration(
             labelText: 'Note Content',
             border: InputBorder.none,
@@ -199,8 +157,8 @@ class _AddNoteScreenState extends State<AddNoteScreen>
 
   @override
   void dispose() {
-    _titleController.dispose();
-    _contentController.dispose();
+    _dataContoller.dispose();
+
     _animationController.dispose();
     super.dispose();
   }

@@ -18,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _isMenuOpen = false;
     });
-    print("Selected: $value");
   }
 
   @override
@@ -56,23 +55,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   color: Colors.white,
-                  icon: const Icon(Icons.add, color: Colors.white),
+                  icon: const Icon(Icons.date_range_outlined,
+                      color: Colors.white),
                   offset: const Offset(0, 50),
                   itemBuilder: (context) => const [
                     PopupMenuItem(
-                      value: 'add_task',
+                      value: 'Today',
                       child: Text('Today'),
                     ),
                     PopupMenuItem(
-                      value: 'add_project',
+                      value: 'This Week',
                       child: Text('This Week'),
                     ),
                     PopupMenuItem(
-                      value: 'delete_task',
+                      value: 'This Month',
                       child: Text('This Month'),
                     ),
                     PopupMenuItem(
-                      value: 'delete_task',
+                      value: 'This Year',
                       child: Text('This Year'),
                     ),
                   ],
@@ -121,11 +121,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   direction: Axis.horizontal,
                   useTextDirection: true,
                   enabled: true,
-                  child: Container(
+                  child: SizedBox(
                     width: double.infinity,
                     child: Taskcard(
-                      task: Task("Create a Task", true,
-                          "This is a sample task to demonstrate the UI."),
+                      task: Task("Create a Task", true, "This is the UI."),
                     ),
                   ),
                 );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rise/layout/home_screen_layout.dart';
-import 'package:rise/modules/add_screens/add_task_screen.dart';
+import 'package:rise/modules/quick_note_screen.dart';
+import 'package:rise/modules/splash_screen.dart';
 
 void main() {
   runApp(const RiseApp());
@@ -35,7 +36,6 @@ class RiseApp extends StatelessWidget {
             fontSize: 12,
           ),
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: false,
       ),
       home: HomeScreenLayout(),

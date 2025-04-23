@@ -4,6 +4,7 @@ import 'package:rise/modules/add_screens/add_project_screen.dart';
 import 'package:rise/modules/add_screens/add_task_screen.dart';
 import 'package:rise/modules/home_screen.dart';
 import 'package:rise/modules/project_screen.dart';
+import 'package:rise/modules/quick_note_screen.dart';
 
 class HomeScreenLayout extends StatefulWidget {
   const HomeScreenLayout({super.key});
@@ -19,8 +20,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
   final List<Widget> pages = [
     HomeScreen(),
     ProjectsScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    QuickNotesWidget(),
     HomeScreen(),
   ];
 

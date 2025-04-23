@@ -38,20 +38,6 @@ class _AddProjectScreenState extends State<AddProjectScreen>
   late AnimationController _animationController;
   late Animation<double> _animation;
 
-  final List<Color> _priorityColors = [
-    Colors.green, // Low priority
-    Colors.blue, // Medium priority
-    Colors.orange, // High priority
-    Colors.red, // Urgent priority
-  ];
-
-  final List<String> _priorityLabels = [
-    'Low',
-    'Medium',
-    'High',
-    'Urgent',
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -64,33 +50,6 @@ class _AddProjectScreenState extends State<AddProjectScreen>
       curve: Curves.easeOut,
     );
     _animationController.forward();
-  }
-
-  void _selectDeadline() async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: _deadline ?? DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2100),
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
-              primary: Colors.blue[400]!,
-              onPrimary: Colors.white,
-              onSurface: Colors.black,
-            ),
-          ),
-          child: child!,
-        );
-      },
-    );
-
-    if (picked != null) {
-      setState(() {
-        _deadline = picked;
-      });
-    }
   }
 
   void _saveProject() {

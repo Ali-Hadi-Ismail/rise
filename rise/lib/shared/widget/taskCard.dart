@@ -4,8 +4,7 @@ import 'package:rise/models/task.dart';
 class Taskcard extends StatefulWidget {
   final Task task;
   const Taskcard({
-    required this.task, // ✅ Injected through constructor
-
+    required this.task,
     super.key,
   });
 
@@ -49,7 +48,7 @@ class _TaskcardState extends State<Taskcard> {
         margin: EdgeInsets.all(20),
         shadowColor: Colors.black,
         surfaceTintColor: Colors.white38,
-        child: Container(
+        child: SizedBox(
           height: 100,
           width: MediaQuery.of(context).size.width * 0.8,
           child: Row(
@@ -83,8 +82,9 @@ class _TaskcardState extends State<Taskcard> {
           opacity: widget.task.isCompleted ? 0.5 : 1.0,
           duration: Duration(milliseconds: 500),
           child: Container(
-            width: 300,
+            width: 200,
             child: Text(
+              maxLines: 1,
               widget.task.title,
               style: TextStyle(
                 fontSize: 19,
@@ -102,9 +102,9 @@ class _TaskcardState extends State<Taskcard> {
         AnimatedOpacity(
           opacity: widget.task.isCompleted ? 0.5 : 1.0,
           duration: Duration(milliseconds: 500),
-          child: Container(
-            width: 300,
+          child: Flexible(
             child: Text(
+              maxLines: 1,
               widget.task.description,
               style: TextStyle(
                 fontSize: 16,

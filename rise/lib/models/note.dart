@@ -1,12 +1,7 @@
 class Note {
-  String title = '';
-  String content = '';
-  int createdAt = 0;
-  int id = 0;
+  String data = '';
 
-  Note(String title, String content) {
-    this.title = title;
-    this.content = content;
-    this.createdAt = DateTime.now().millisecondsSinceEpoch;
+  Note(String data) {
+    this.data = data;
   }
 }
