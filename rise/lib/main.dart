@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rise/layout/home_screen_layout.dart';
+
+import 'package:rise/shared/cubit/task_%20cubit.dart';
 
 void main() {
   runApp(const RiseApp());
@@ -10,33 +13,36 @@ class RiseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Rise',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'WinkyRough',
-        textTheme: TextTheme(
-          bodyLarge: TextStyle(fontFamily: 'WinkyRough'),
-          bodyMedium: TextStyle(fontFamily: 'WinkyRough'),
-          bodySmall: TextStyle(fontFamily: 'WinkyRough'),
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white70,
-          selectedLabelStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontFamily: 'WinkyRough',
-            color: Colors.white,
-            fontSize: 14,
+    return BlocProvider(
+      create: (context) => TaskCubit(),
+      child: MaterialApp(
+        title: 'Rise',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'WinkyRough',
+          textTheme: TextTheme(
+            bodyLarge: TextStyle(fontFamily: 'WinkyRough'),
+            bodyMedium: TextStyle(fontFamily: 'WinkyRough'),
+            bodySmall: TextStyle(fontFamily: 'WinkyRough'),
           ),
-          unselectedLabelStyle: TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: 12,
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white70,
+            selectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontFamily: 'WinkyRough',
+              color: Colors.white,
+              fontSize: 14,
+            ),
+            unselectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 12,
+            ),
           ),
+          useMaterial3: false,
         ),
-        useMaterial3: false,
+        home: HomeScreenLayout(),
       ),
-      home: HomeScreenLayout(),
     );
   }
 }

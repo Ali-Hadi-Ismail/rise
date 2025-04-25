@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rise/modules/add_screens/add_note_screen.dart';
-import 'package:rise/modules/add_screens/add_project_screen.dart';
+
 import 'package:rise/modules/add_screens/add_task_screen.dart';
 import 'package:rise/modules/home_screen.dart';
-import 'package:rise/modules/project_screen.dart';
+
 import 'package:rise/modules/quick_note_screen.dart';
 
 class HomeScreenLayout extends StatefulWidget {
@@ -19,7 +19,6 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
 
   final List<Widget> pages = [
     HomeScreen(),
-    ProjectsScreen(),
     QuickNotesWidget(),
     HomeScreen(),
   ];
@@ -99,21 +98,6 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                         },
                         child: Text('📝 Add Task')),
                     PopupMenuItem(
-                        value: 'add_project',
-                        onTap: () {
-                          setState(() {
-                            _isMenuOpen = false;
-                          });
-                          Navigator.push(
-                            (context),
-                            MaterialPageRoute(
-                              builder: (context) => const AddProjectScreen(),
-                            ),
-                          );
-                        },
-                        child: Text('📁 Add Project')),
-                    PopupMenuItem(
-                        value: 'add_project',
                         onTap: () {
                           setState(() {
                             _isMenuOpen = false;
@@ -142,7 +126,6 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
         onTap: _onButtonTap,
         items: <BottomNavigationBarItem>[
           _bottomNavigationButton("Home", Icons.task_alt_rounded),
-          _bottomNavigationButton("Project", Icons.menu_book),
           _bottomNavigationButton("Notes", Icons.book_sharp),
           _bottomNavigationButton("Profile", Icons.person_outline_sharp),
         ],
