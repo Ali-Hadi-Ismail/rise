@@ -102,20 +102,18 @@ class _TaskcardState extends State<Taskcard> {
         AnimatedOpacity(
           opacity: widget.task.isCompleted ? 0.5 : 1.0,
           duration: Duration(milliseconds: 500),
-          child: Flexible(
-            child: Text(
-              maxLines: 1,
-              widget.task.description,
-              style: TextStyle(
-                fontSize: 16,
-                overflow: TextOverflow.ellipsis,
-                color: Colors.grey,
-                decoration: widget.task.isCompleted
-                    ? TextDecoration.lineThrough
-                    : TextDecoration.none,
-                decorationColor: Colors.grey,
-                decorationThickness: 2.0,
-              ),
+          child: Text(
+            maxLines: 1,
+            widget.task.description,
+            style: TextStyle(
+              fontSize: 16,
+              overflow: TextOverflow.ellipsis,
+              color: Colors.grey,
+              decoration: widget.task.isCompleted
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none,
+              decorationColor: Colors.grey,
+              decorationThickness: 2.0,
             ),
           ),
         ),

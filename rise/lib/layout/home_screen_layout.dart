@@ -87,50 +87,45 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                   offset: const Offset(0, -150),
                   itemBuilder: (context) => [
                     PopupMenuItem(
-                      value: 'add_task',
-                      child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              _isMenuOpen = false;
-                            });
-                            Navigator.push(
-                                (context),
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const AddTaskScreen()));
-                          },
-                          child: Text('📝 Add Task')),
-                    ),
+                        value: 'add_task',
+                        onTap: () {
+                          setState(() {
+                            _isMenuOpen = false;
+                          });
+                          Navigator.push(
+                              (context),
+                              MaterialPageRoute(
+                                  builder: (context) => const AddTaskScreen()));
+                        },
+                        child: Text('📝 Add Task')),
                     PopupMenuItem(
-                      value: 'add_project',
-                      child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              _isMenuOpen = false;
-                            });
-                            Navigator.push(
-                                (context),
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const AddProjectScreen()));
-                          },
-                          child: Text('📁 Add Project')),
-                    ),
+                        value: 'add_project',
+                        onTap: () {
+                          setState(() {
+                            _isMenuOpen = false;
+                          });
+                          Navigator.push(
+                            (context),
+                            MaterialPageRoute(
+                              builder: (context) => const AddProjectScreen(),
+                            ),
+                          );
+                        },
+                        child: Text('📁 Add Project')),
                     PopupMenuItem(
-                      value: 'add_project',
-                      child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              _isMenuOpen = false;
-                            });
-                            Navigator.push(
-                                (context),
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const AddNoteScreen()));
-                          },
-                          child: Text('📁 Add Notes')),
-                    ),
+                        value: 'add_project',
+                        onTap: () {
+                          setState(() {
+                            _isMenuOpen = false;
+                          });
+                          Navigator.push(
+                            (context),
+                            MaterialPageRoute(
+                              builder: (context) => const AddNoteScreen(),
+                            ),
+                          );
+                        },
+                        child: Text('🧾 Add Notes')),
                   ],
                 ),
               ),

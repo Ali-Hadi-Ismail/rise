@@ -23,14 +23,38 @@ class _AddTaskScreenState extends State<AddTaskScreen>
   late AnimationController _animationController;
   late Animation<double> _animation;
   late List<Project> P = [
-    Project("Project 1", "Description 1", 0, 0),
-    Project("Project 2", "Description 2", 0, 0),
-    Project("Project 3", "Description 3", 0, 0),
-    Project("Project 4", "Description 4", 0, 0),
-    Project("Project 5", "Description 5", 0, 0),
-    Project("Project 6", "Description 6", 0, 0),
-    Project("Project 7", "Description 7", 0, 0),
-    Project("Project 8", "Description 8", 0, 0),
+    Project(
+      "Project 1",
+      "Description 1",
+    ),
+    Project(
+      "Project 2",
+      "Description 2",
+    ),
+    Project(
+      "Project 3",
+      "Description 3",
+    ),
+    Project(
+      "Project 4",
+      "Description 4",
+    ),
+    Project(
+      "Project 5",
+      "Description 5",
+    ),
+    Project(
+      "Project 6",
+      "Description 6",
+    ),
+    Project(
+      "Project 7",
+      "Description 7",
+    ),
+    Project(
+      "Project 8",
+      "Description 8",
+    ),
   ];
 
   @override

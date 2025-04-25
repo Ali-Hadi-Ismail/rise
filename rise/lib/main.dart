@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rise/layout/home_screen_layout.dart';
-import 'package:rise/modules/quick_note_screen.dart';
-import 'package:rise/modules/splash_screen.dart';
 
 void main() {
   runApp(const RiseApp());
