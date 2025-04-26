@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rise/modules/add_screens/add_note_screen.dart';
 
 import 'package:rise/modules/add_screens/add_task_screen.dart';
 import 'package:rise/modules/home_screen.dart';
@@ -20,7 +19,6 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
   final List<Widget> pages = [
     HomeScreen(),
     QuickNotesWidget(),
-    HomeScreen(),
   ];
 
   void _onButtonTap(int index) {
@@ -102,14 +100,8 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                           setState(() {
                             _isMenuOpen = false;
                           });
-                          Navigator.push(
-                            (context),
-                            MaterialPageRoute(
-                              builder: (context) => const AddNoteScreen(),
-                            ),
-                          );
                         },
-                        child: Text('🧾 Add Notes')),
+                        child: Text('🧾 Add Notes (coming soon)')),
                   ],
                 ),
               ),
@@ -127,7 +119,6 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
         items: <BottomNavigationBarItem>[
           _bottomNavigationButton("Home", Icons.task_alt_rounded),
           _bottomNavigationButton("Notes", Icons.book_sharp),
-          _bottomNavigationButton("Profile", Icons.person_outline_sharp),
         ],
       ),
     );

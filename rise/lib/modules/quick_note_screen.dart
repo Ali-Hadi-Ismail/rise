@@ -21,7 +21,7 @@ class QuickNotesWidget extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: (notes.length != 0)
+        body: (notes.isNotEmpty)
             ? ListView.builder(
                 itemCount: notes.length,
                 padding: const EdgeInsets.all(16),

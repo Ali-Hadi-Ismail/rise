@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rise/layout/home_screen_layout.dart';
+import 'package:rise/modules/splash_screen.dart';
 
 import 'package:rise/shared/cubit/task_%20cubit.dart';
 
@@ -41,7 +42,7 @@ class RiseApp extends StatelessWidget {
           ),
           useMaterial3: false,
         ),
-        home: HomeScreenLayout(),
+        home: SplashScreen(),
       ),
     );
   }
