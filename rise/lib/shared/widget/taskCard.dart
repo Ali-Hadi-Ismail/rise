@@ -118,22 +118,6 @@ class Taskcard extends StatelessWidget {
             ),
           ),
         ),
-        AnimatedOpacity(
-          opacity: task.isCompleted ? 0.5 : 1.0,
-          duration: Duration(milliseconds: 500),
-          child: Text(
-            "9:00",
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey,
-              decoration: task.isCompleted
-                  ? TextDecoration.lineThrough
-                  : TextDecoration.none,
-              decorationColor: Colors.grey,
-              decorationThickness: 2.0,
-            ),
-          ),
-        ),
       ],
     );
   }
