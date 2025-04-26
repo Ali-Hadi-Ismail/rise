@@ -84,7 +84,6 @@ class DataHelper {
     ''');
   }
 
-  // Note methods
   Future<int> insertNote(String content) async {
     final db = await database;
     return await db.insert('note', {'content': content});

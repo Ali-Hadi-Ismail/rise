@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_initializing_formals, library_private_types_in_public_api, prefer_final_fields
+
 import 'package:flutter/material.dart';
 import 'package:rise/models/task.dart';
 
@@ -21,7 +23,7 @@ class Project {
 class AddProjectScreen extends StatefulWidget {
   final Function(Project)? onProjectAdded;
 
-  const AddProjectScreen({Key? key, this.onProjectAdded}) : super(key: key);
+  const AddProjectScreen({super.key, this.onProjectAdded});
 
   @override
   _AddProjectScreenState createState() => _AddProjectScreenState();
@@ -190,10 +192,6 @@ class _AddProjectScreenState extends State<AddProjectScreen>
         ),
       ),
     );
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day}/${date.month}/${date.year}';
   }
 
   Widget _buildCreateProjectButton() {

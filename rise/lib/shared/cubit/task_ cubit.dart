@@ -11,9 +11,19 @@ class TaskCubit extends Cubit<TaskCubitStates> {
 
   DataHelper dataHelper = DataHelper();
   List<Task> allTasks = [];
-  List<Note> allNotes = [];
   List<Task> incompleteTasks = [];
   List<Task> completeTasks = [];
+  String listType = "All";
+  List<Task> currentTask = [];
+  List<Task> filterTask(String s) {
+    if (s == "All") {
+      return allTasks;
+    } else if (s == "Complete") {
+      return completeTasks;
+    } else {
+      return incompleteTasks;
+    }
+  }
 
   Future<void> getAllTasks() async {
     emit(TaskLoadingState());
@@ -21,10 +31,9 @@ class TaskCubit extends Cubit<TaskCubitStates> {
       final tasks = await dataHelper.getAllTasks();
       allTasks = tasks.map((task) => Task.fromMap(task)).toList();
 
-      // Sort tasks into complete and incomplete
       incompleteTasks = allTasks.where((task) => !task.isCompleted).toList();
       completeTasks = allTasks.where((task) => task.isCompleted).toList();
-
+      currentTask = filterTask(listType);
       emit(TaskLoadedState());
     } catch (e) {
       emit(TaskErrorState(e.toString()));

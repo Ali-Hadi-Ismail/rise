@@ -95,149 +95,6 @@ class _TaskDetailScreenState extends State<TaskDetailScreen>
     );
   }
 
-  void _editTask(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) => StatefulBuilder(
-        builder: (context, setState) => Container(
-          height: MediaQuery.of(context).size.height * 0.75,
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom,
-          ),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Edit Task',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-
-                // Edit form fields
-                TextField(
-                  controller: _titleController,
-                  decoration: InputDecoration(
-                    labelText: 'Title',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 12,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                TextField(
-                  controller: _descriptionController,
-                  maxLines: 4,
-                  decoration: InputDecoration(
-                    labelText: 'Description',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    contentPadding: const EdgeInsets.all(16),
-                  ),
-                ),
-                const SizedBox(height: 16),
-
-                // Task completion status toggle
-                Row(
-                  children: [
-                    Checkbox(
-                      value: _isCompleted,
-                      activeColor: Colors.red,
-                      onChanged: (value) {
-                        setState(() {
-                          _isCompleted = value ?? false;
-                        });
-                      },
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      'Mark as completed',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: _isCompleted ? Colors.red : Colors.blue,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-
-                const Spacer(),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFf96060),
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    onPressed: () async {
-                      // Update task with new values
-                      if (widget.task != null) {
-                        final updatedTask = Task(
-                          id: widget.task!.id,
-                          title: _titleController.text,
-                          description: _descriptionController.text,
-                          isCompleted: _isCompleted ? true : false,
-                        );
-
-                        if (context.mounted) {
-                          // Refresh task list in TaskCubit
-                          final cubit = BlocProvider.of<TaskCubit>(context);
-                          await cubit.getAllTasks(); // Refresh the task list
-
-                          // Go back to home screen (close both bottom sheet and detail screen)
-                          Navigator.pop(context); // Close bottom sheet
-                          Navigator.pop(context); // Go back to home screen
-                        }
-                      }
-                    },
-                    child: const Text(
-                      'Save Changes',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     // Ensure that the task is not null before displaying its properties
@@ -386,8 +243,8 @@ class _TaskDetailScreenState extends State<TaskDetailScreen>
 
                 const Spacer(),
 
-                // Action Buttons
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
                       child: ElevatedButton.icon(
@@ -404,25 +261,6 @@ class _TaskDetailScreenState extends State<TaskDetailScreen>
                         icon: const Icon(Icons.delete),
                         label: const Text(
                           'Delete',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: statusColor,
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        onPressed: () => _editTask(context),
-                        icon: const Icon(Icons.edit),
-                        label: const Text(
-                          'Edit',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),

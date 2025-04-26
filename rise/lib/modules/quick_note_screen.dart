@@ -13,7 +13,7 @@ class QuickNotesWidget extends StatelessWidget {
           elevation: 0,
           backgroundColor: const Color(0xFFf96060),
           title: const Text(
-            'Quick Notes',
+            'Quick Notes (coming soon)',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w500,
