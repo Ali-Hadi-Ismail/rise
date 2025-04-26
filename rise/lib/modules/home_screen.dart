@@ -22,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-
     context.read<TaskCubit>().getAllTasks();
   }
 
@@ -46,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, state) {
         final cubit = context.read<TaskCubit>();
 
+        // Select the appropriate list based on filter
         List<Task> source;
         switch (_currentFilter) {
           case 'Complete':
@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
           default:
             source = cubit.allTasks;
         }
-
+        // Reverse for latest-first
         final tasks = source.reversed.toList();
 
         return Stack(
@@ -125,9 +125,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       extentRatio: 0.2,
                       children: [
                         SlidableAction(
-                          onPressed: (slideContext) async {
-                            final cubit = context.read<TaskCubit>();
-                            await cubit.deleteTask(task.id);
+                          onPressed: (context) async {
+                            await cubit.deleteTask(task.id!);
                           },
                           backgroundColor: const Color(0xFFf96060),
                           foregroundColor: Colors.white,
@@ -136,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     child: Container(
-                      width: double.infinity,
+                      width: double.infinity, // Make sure it fills the width
                       child: GestureDetector(
                         onLongPress: () {
                           Navigator.of(context).push(
